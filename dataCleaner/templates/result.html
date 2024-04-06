@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Your File</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- import Montserrat font -->
+    <!-- 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet' -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"> 
+
+  
+</head>
+<body>
+    <div class="body">
+        <div class="container">
+            <div id="section_1" class="container__body">
+                    
+                <div class="title animate__animated animate__bounce">
+                    <h4>Your Data Set Is Ready!</h4>
+                    <p>Thank You For Using Our Program</p>
+                </div>
+                
+                <button type="button" class="button-primary" onclick='onDownload()'>Download</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function download(content, fileName, contentType) {
+		  const a = document.createElement("a");
+		  const file = new Blob([content], { type: contentType });
+		  a.href = URL.createObjectURL(file);
+		  a.download = fileName; // include file extension
+		  a.click();
+		}
+
+		function onDownload(){
+            let resultJson = JSON.parse('{{ result | tojson | safe }}');
+            let fileName = '{{ fileName }}';
+			download(JSON.stringify(resultJson), `cleaned__${fileName}`, "text/plain");
+		}
+    </script>
+</body>
+</html>

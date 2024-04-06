@@ -1,0 +1,191 @@
+* {
+    padding: 0;
+    margin: 0;
+}
+h1,h2,h3,h4,h5,h6,p, label, input {
+    font-family: 'Montserrat', sans-serif;
+}
+.input-primary {
+    width: 80%;
+    min-width: 50px;
+    padding: .3rem;
+    margin: 10px 5px;
+    border: 1px solid #939393;
+    background-color: #fff;
+    box-shadow: none;
+    transition: 0.1s;
+    border-radius: 5px;
+    outline: none;
+    font-size: 1.4rem;
+    &:hover {
+        /* make some box shadow with color light blue */
+        box-shadow: 0px 0px 1px 3px #93939398;
+    }
+    &:focus {
+        /* make some box shadow with color light blue */
+        box-shadow: 0px 0px 1px 3px #08c3e8;
+        /* border-color: #08c3e8; */
+    }
+}
+.input-file {
+    display: none;
+}
+
+.button-primary {
+    background-color: #00B4D8;
+    text-transform: capitalize;
+    color: white;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 1rem;
+    border-radius: 5px;
+    padding: .8rem;
+    border: none;
+    margin: 0.5rem 0rem 0.8rem 0rem;
+    min-width: 10rem;
+    transition: 0.2s;
+    cursor: pointer;
+    &:hover {
+        background-color: #00758c;
+    }
+    &:active {
+        background-color: black;
+    }
+    &:disabled{
+        background-color: rgb(145, 145, 145);
+        cursor: not-allowed;
+
+    }
+}
+/* .button-primary.special {
+    background-color: #024856;
+    &:hover {
+        background-color: #00758c;
+    }
+    &:active {
+        background-color: black;
+    }
+} */
+
+.body {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    overflow: hidden;
+}
+.title {
+    font-size: 1.5rem;
+    margin-bottom: 3rem;
+}
+.title p {
+    margin-top: 0.5rem;
+    font-size: 1.2rem;
+}
+.container {
+    width: 100vw;
+    height: 100vh;
+    position: relative;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    /* background-color: #00B4D8; */
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+}
+
+.container__header h1 {
+    margin-bottom: .8rem;
+}
+
+.container__body {
+    flex: 1;
+    /* display: flex;*/
+    width: 100vw;
+    justify-content: center;
+    align-content: center;
+    min-height: 100vh;
+
+    display: grid;
+    place-items: center;
+    transition: 0.2s;
+    overflow: hidden;
+    
+
+}
+
+.container__body.active {
+    min-height: 0vh;
+    height: 0vh;
+}
+
+.label-primary {
+    font-size: 1.5rem;
+    margin-bottom: 0.9rem;
+}
+.label-primary span {
+    color: #00B4D8;
+    font-weight: bold;
+}
+
+
+.buttonsOptions {
+    width: 100vw;
+    margin-top: 1rem;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 1rem;
+}
+
+
+
+
+
+#fileUploadedName {
+    font-size: 1.2rem;
+    margin: 0.5rem;
+    opacity: 0.1;
+    transition: 0.2s;
+}
+#fileUploadedName span {
+    color: #00758c;
+    font-weight: bold;
+}
+#fileUploadedName.active {
+    opacity: 1;
+}
+label.button-primary input {
+    display: none;
+}
+
+
+
+/* for phones, make the height of the body fit the content */
+@media screen and (max-width: 600px) {
+    .button-primary {
+        width: 80vw;
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+    }
+}
+
+/* HTML: <div class="loader"></div> */
+.loader {
+width: 60px;
+margin-bottom: 2rem;
+aspect-ratio: 2;
+--_g: no-repeat radial-gradient(circle closest-side,#00B4D8 90%,#0000);
+background: 
+    var(--_g) 0%   50%,
+    var(--_g) 50%  50%,
+    var(--_g) 100% 50%;
+background-size: calc(100%/3) 50%;
+animation: l3 1s infinite linear;
+}
+@keyframes l3 {
+    20%{background-position:0%   0%, 50%  50%,100%  50%}
+    40%{background-position:0% 100%, 50%   0%,100%  50%}
+    60%{background-position:0%  50%, 50% 100%,100%   0%}
+    80%{background-position:0%  50%, 50%  50%,100% 100%}
+}

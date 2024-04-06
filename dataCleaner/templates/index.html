@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Cleaner</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- import Montserrat font -->
+    <!-- 'https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap" rel="stylesheet' -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,100..900;1,100..900&display=swap">
+    <link
+    rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"
+  />
+    
+  <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"> 
+</head>
+<body>
+    <div class="body">
+        <div class="container">
+            <form enctype = "multipart/form-data" method="POST" action="/uploader" id="uploadForm" >
+
+                <div id="section_1" class="container__body">
+                    
+                    <div class="title animate__animated animate__bounce">
+                        <h1 >Data Cleaner</h1>
+                        <p>Made By Abdulah Al-, A KFUPM Student :)</p>
+                    </div>
+                    <button type="button" class="button-primary" onclick="closeSection('section_1')">Start Cleaning</button>
+                </div>
+
+                <div id="section_2" class="container__body">
+
+                        <label class="label-primary">First, Select A Json File</label>
+                        <label id="fileUploadedName" ></label>
+
+                        <div class="buttonsOptions">
+                            <label for="fileSelector" class="button-primary">Upload Json File</label>
+                            <input id="fileSelector" class="input-file" type="file" name="file" accept=".json" />
+                            <button type="button" id="fileUploaded_StartButton" disabled="True" onclick="closeSection('section_2')" class="button-primary">Next</button>
+                        </div>
+                                        
+                </div>
+                
+                <div id="questionsStartHere"></div>
+
+
+                <div class="container__body">
+                    <!-- infinte loop -->
+                    <div class="loader"></div>
+
+                    <label class="label-primary" >Processing Your File</label>
+                </div>
+                
+            <!-- submit continater  -->
+            </form>
+        </div>
+    </div>
+    <script 
+        type="text/javascript" 
+        src="{{ url_for('static', filename='index.js')}} "
+        >
+    </script>
+    <script 
+        type="text/javascript" 
+        src="{{ url_for('static', filename='fileSelector.js')}} "
+        >
+    </script>
+    <script 
+        type="text/javascript" 
+        src="{{ url_for('static', filename='generateQuestions.js')}} "
+        >
+    </script>
+    <!-- <scirpt src="index.js"></scirpt> -->
+    <!-- <script src="../static/index.js"></script>
+    <script src="../static/fileSelector.js"></script>
+    <script src="../static/generateQuestions.js"></script> -->
+    <script> 
+        
+        function closeSection(sectionId) {
+            document.getElementById(sectionId).className = "container__body active"
+        }
+        
+        // document.querySelector('form').addEventListener('submit', function(event) { 
+        //     event.preventDefault(); // Prevents the form from submitting and the page from reloading 
+        //     // Your custom logic here 
+        // }); 
+
+
+    </script>
+</body>
+</html>
