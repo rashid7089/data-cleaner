@@ -1,5 +1,5 @@
 function ButtonOptionsForColumnType_Template(id_name, id, columnName) {
-    values = ['numerical', 'categorical', 'nominal', 'ordinal']
+    values = ['numerical', 'nominal', 'ordinal']
     return `
         <div id="${id_name}" class="container__body">
             <label class="label-primary">What Is The Type Of "<span>${columnName}</span>" Column?</label>
@@ -12,7 +12,7 @@ function ButtonOptionsForColumnType_Template(id_name, id, columnName) {
             </div>
         </div>
         `
-} 
+}
 
 class GenerateQuestions {
     // let Columns_IsNumerical = {}
