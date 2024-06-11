@@ -24,19 +24,19 @@
                     
                     <div class="title animate__animated animate__bounce">
                         <h1 >Data Cleaner</h1>
-                        <p>Made By Abdulah Al-, A KFUPM Student :)</p>
+                        <p>Made By Abdullah Alotaibi A KFUPM Student :)</p>
                     </div>
                     <button type="button" class="button-primary" onclick="closeSection('section_1')">Start Cleaning</button>
                 </div>
 
                 <div id="section_2" class="container__body">
 
-                        <label class="label-primary">First, Select A Json File</label>
+                        <label class="label-primary">First, Select A CSV File</label>
                         <label id="fileUploadedName" ></label>
 
                         <div class="buttonsOptions">
-                            <label for="fileSelector" class="button-primary">Upload Json File</label>
-                            <input id="fileSelector" class="input-file" type="file" name="file" accept=".json" />
+                            <label for="fileSelector" class="button-primary">Upload CSV File</label>
+                            <input id="fileSelector" class="input-file" type="file" name="file" accept=".csv" />
                             <button type="button" id="fileUploaded_StartButton" disabled="True" onclick="closeSection('section_2')" class="button-primary">Next</button>
                         </div>
                                         
@@ -57,6 +57,11 @@
         </div>
     </div>
     <script 
+    type="text/javascript" 
+        src="{{ url_for('static', filename='questionsTemplates.js')}} "
+        >
+    </script>
+    <script 
         type="text/javascript" 
         src="{{ url_for('static', filename='index.js')}} "
         >
@@ -71,6 +76,12 @@
         src="{{ url_for('static', filename='generateQuestions.js')}} "
         >
     </script>
+    <script 
+        type="text/javascript" 
+        src="{{ url_for('static', filename='csvToJson.js')}} "
+        >
+    </script>
+
     <!-- <scirpt src="index.js"></scirpt> -->
     <!-- <script src="../static/index.js"></script>
     <script src="../static/fileSelector.js"></script>

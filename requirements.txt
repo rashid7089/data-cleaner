@@ -1,3 +1,5 @@
-flask
-pandas
-werkzeug
+Flask==3.0.3
+pandas==2.2.2
+scikit_learn==1.5.0
+scipy==1.13.1
+Werkzeug==3.0.3

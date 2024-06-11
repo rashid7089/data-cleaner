@@ -32,6 +32,7 @@ h1,h2,h3,h4,h5,h6,p, label, input {
 }
 
 .button-primary {
+    text-decoration: none;
     background-color: #00B4D8;
     text-transform: capitalize;
     color: white;
@@ -51,9 +52,8 @@ h1,h2,h3,h4,h5,h6,p, label, input {
         background-color: black;
     }
     &:disabled{
-        background-color: rgb(145, 145, 145);
+        background-color: rgb(145, 145, 145)!important;
         cursor: not-allowed;
-
     }
 }
 /* .button-primary.special {
@@ -65,6 +65,10 @@ h1,h2,h3,h4,h5,h6,p, label, input {
         background-color: black;
     }
 } */
+.button-primary.disabled {
+    background-color: rgb(145, 145, 145) !important;
+    cursor: not-allowed;
+}
 
 .body {
     width: 100vw;

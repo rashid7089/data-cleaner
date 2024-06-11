@@ -1,10 +1,10 @@
 
-async function processFile(file) {
-    // var file = document.getElementById('file').files[0];
-    // await for response
-    // sendFile(file);
+// async function processFile(file) {
+//     // var file = document.getElementById('file').files[0];
+//     // await for response
+//     // sendFile(file);
 
-}
+// }
 
 function sendData() {
     var value = document.getElementById("input").value;

@@ -27,25 +27,11 @@
                     <p>Thank You For Using Our Program</p>
                 </div>
                 
-                <button type="button" class="button-primary" onclick='onDownload()'>Download</button>
+                <!-- <button type="button" class="button-primary" onclick='onDownload()'>Download</button> -->
+                <a class="button-primary" target="_blank" href="{{  url_for('views.download', fileName=file_newName, filepath=resultPath )     }}">Download</a>
+
             </div>
         </div>
     </div>
-
-    <script>
-        function download(content, fileName, contentType) {
-		  const a = document.createElement("a");
-		  const file = new Blob([content], { type: contentType });
-		  a.href = URL.createObjectURL(file);
-		  a.download = fileName; // include file extension
-		  a.click();
-		}
-
-		function onDownload(){
-            let resultJson = JSON.parse('{{ result | tojson | safe }}');
-            let fileName = '{{ fileName }}';
-			download(JSON.stringify(resultJson), `cleaned__${fileName}`, "text/plain");
-		}
-    </script>
 </body>
 </html>
