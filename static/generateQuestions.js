@@ -116,7 +116,7 @@ class GenerateQuestions__NominalEncoding {
     
     generateHTML = (columnsNames) => {
         const QuestionsStartHere = document.getElementById("questionsStartHere"); // start after this element
-
+        
         // generate questions html
         for (let i = 0; i < columnsNames.length; i++) {
             QuestionsStartHere.insertAdjacentHTML('beforeend', nominalEncoding_question(columnsNames[i]))
@@ -129,10 +129,13 @@ class GenerateQuestions__NominalEncoding {
 class GenerateQuestions__OrdinalEncoding {
     constructor() {
         let ordinalColumns = this.getOrdinalColumns(ColumnsTypes)
-        this.generateHTML(ordinalColumns);
 
-        // generate submit button
-        // generateSubmitButton();
+        if (ordinalColumns.length == 0) {
+          generateSubmitButton();
+          return;
+        }
+
+        this.generateHTML(ordinalColumns);
     }
 
     getOrdinalColumns = (columnsTypes) => {
@@ -166,6 +169,9 @@ class GenerateQuestions__OrdinalEncoding {
     }
 }
 
+
+// helper functions for ordinal questions
+// --------------------------------------------
 const getOrdinalUniqueValues = (columnName) => {    
     const values = AllData.map(d => d[columnName])
     const uniqueValues = [...new Set(values)].filter(v => v != null && v != undefined)
@@ -180,6 +186,7 @@ const generateOrdinalOrderQuestion = (columnName, answer) => {
 }
 
 const finish_ordinalEncodingQuestionsSection = () => {
+    // if user choose "None" for all ordinal columns
     if (ordinalOrder_Queue.length == 0) {
         generateSubmitButton();
         return;
@@ -226,6 +233,7 @@ const addTo__OrdinalOrders_Data = (columnName, value, index) => {
       "beforeend",
       ordinalOrder_question(
         columnName,
+        uniqueValues,
         uniqueValues[index],
         AllOptions,
         usedOptions,
@@ -234,6 +242,9 @@ const addTo__OrdinalOrders_Data = (columnName, value, index) => {
       )
     );
 };
+// --------------------------------------------
+// --------------------------------------------
+// --------------------------------------------
 
 
 

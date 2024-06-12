@@ -122,14 +122,15 @@ const ordinalEncoding_question = (columnName, functionCallForOrdinalOrder, isLas
         `
 }
 
-const ordinalOrder_question = (columnName, ordinalValue, options, usedOptions, index, AddToUsedOption) => {
+const ordinalOrder_question = (columnName, uniqueValues, ordinalValue, options, usedOptions, index, AddToUsedOption) => {
 
     let id_name = generateRandomIdName();
     let inputName = `${columnName}_|%|_${ordinalValue}_ordinal_order`
     console.log(`${usedOptions}`);
     return `
         <div id="${id_name}" class="container__body">
-            <label class="label-primary">What is the order of "<span>${ordinalValue}</span>" in "<span>${columnName}</span>"?</label>
+            <label class="label-primary">in ordinal column "<span>${columnName}</span>", what is the order of the unique value highlighted in blue?</label>
+            <label class="label-list">[${uniqueValues.map((u,i) => i==index?`<span>${ordinalValue}</span>`:u).join(", ")}]</label>
             <div class="buttonsOptions">
                 ${options
                   .map((value, i) => {
@@ -139,7 +140,9 @@ const ordinalOrder_question = (columnName, ordinalValue, options, usedOptions, i
                         ${i == 0 ? " special " : ""}">${value}
                             <input type="radio" 
                             ${usedOptions.includes(value) ? "disabled" : ""}
-                            name="${inputName}" value="${value}" onclick="closeSection('${id_name}'); ${AddToUsedOption}('${columnName}', ${value}, ${index+1})"></input>
+                            name="${inputName}" value="${value}" onclick="closeSection('${id_name}'); ${AddToUsedOption}('${columnName}', ${value}, ${
+                      index + 1
+                    })"></input>
                         </label>
                     `;
                   })

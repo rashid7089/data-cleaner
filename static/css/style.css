@@ -127,9 +127,13 @@ h1,h2,h3,h4,h5,h6,p, label, input {
     font-size: 1.5rem;
     margin-bottom: 0.9rem;
 }
-.label-primary span {
+.label-primary span,.label-list span {
     color: #00B4D8;
     font-weight: bold;
+}
+.label-list {
+    font-size: 1rem;
+    margin-bottom: 0.9rem;
 }
 
 

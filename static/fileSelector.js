@@ -68,7 +68,6 @@ fileUploaded_StartButton.addEventListener('click', (e) => {
             var result = csvToJson(reader.result);
         //     var result = JSON.parse(reader.result); // Parse the result into an object 
             AllData = result
-            console.log(Array.isArray(result));
             let columns = []
 
             if (Array.isArray(result)) {
@@ -91,7 +90,7 @@ fileUploaded_StartButton.addEventListener('click', (e) => {
 
             let columnsWithNullValues = GetColumnsWithNullOrEmptyValues(result, columns)
             
-            console.log(columns, columnsWithNullValues)
+            // console.log(columns, columnsWithNullValues)
             new GenerateQuestions__columnType(columns, columnsWithNullValues, result); // generate the types questions
         });
         

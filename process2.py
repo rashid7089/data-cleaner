@@ -35,6 +35,7 @@ def mainProcess(file_path, columnsTypes, toImputeList, NormalizationSequence, No
         # df = pd.read_csv(input('Please enter your data set to be processed: '))
         import pandas as pd 
         df = pd.read_csv(file_path)
+        df = df.rename(columns=lambda x: x.strip())
 
         num_type = []
         nom_type = []
@@ -192,8 +193,10 @@ def mainProcess(file_path, columnsTypes, toImputeList, NormalizationSequence, No
                 elif norm_type == 'None':
                     pass
                 else:
-                    print("Normalization Error: wrong input")
-        except:
+                    print("Normalization Error: no selection")
+        except Exception as e:
+            print("Normalization Error: wrong input")
+            print(e)
             return {"message": "Normalization Error: wrong input"}
 
         print("NormalizationSequence passed")
@@ -251,6 +254,7 @@ def mainProcess(file_path, columnsTypes, toImputeList, NormalizationSequence, No
                     pass
                 else:
                     print("Nominal Encoding Error: wrong input")
+            df.replace({False: 0, True: 1}, inplace=True)
         except:
             return {"message": "Nominal Encoding Error: wrong input"}
         

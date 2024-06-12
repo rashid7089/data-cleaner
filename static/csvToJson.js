@@ -2,7 +2,7 @@ function csvToJson(csvString) {
   const regex = /,(?=(?:[^"]*"[^"]*")*(?![^"]*"))/;
   const rows = csvString.split("\n");
   const headers = rows[0].split(regex);
-  console.log(headers)
+  // console.log(headers)
   const jsonData = [];
 
   for (let i = 1; i < rows.length; i++) {
