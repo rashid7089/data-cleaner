@@ -33,9 +33,16 @@ def mainProcess(file_path, columnsTypes, toImputeList, NormalizationSequence, No
     try:
         # Establishing the data frame and prompting the attribute names
         # df = pd.read_csv(input('Please enter your data set to be processed: '))
-        import pandas as pd 
-        df = pd.read_csv(file_path)
-        df = df.rename(columns=lambda x: x.strip())
+        try:
+            import pandas as pd 
+            df = pd.read_csv(file_path)
+        except:
+            return {"message": "File Error: wrong input or file not in csv format"}
+
+        try:
+            df = df.rename(columns=lambda x: x.strip())
+        except:
+            pass
 
         num_type = []
         nom_type = []
@@ -174,21 +181,27 @@ def mainProcess(file_path, columnsTypes, toImputeList, NormalizationSequence, No
 
         ## convert into for loop using NormalizationSequence
         try:
+            # import if needed
+            norms_types = [norm_type for feature, norm_type in NormalizationSequence]
+            if 'StandardScaler' in norms_types:
+                from sklearn.preprocessing import StandardScaler
+            if 'MinMaxScaler' in norms_types:
+                from sklearn.preprocessing import MinMaxScaler
+            if 'z-score' in norms_types:
+                import scipy.stats as stats
+
             for feature, norm_type in NormalizationSequence:
                 if norm_type == 'StandardScaler':
-                    from sklearn.preprocessing import StandardScaler
                     scaler = StandardScaler()
                     scaler.fit(df[[feature]])
                     df[feature]=scaler.transform(df[[feature]])
                     print(f'The mean and std values are', df[feature].mean(), ' and ', df[feature].std())
                 elif norm_type == 'MinMaxScaler':
-                    from sklearn.preprocessing import MinMaxScaler
                     scaler2 = MinMaxScaler()
                     scaler2.fit(df[[feature]])
                     df[feature]=scaler2.transform(df[[feature]])
                     print(f'The max and min values are', df[feature].max(), ' and ', df[feature].min())
                 elif norm_type == 'z-score':
-                    import scipy.stats as stats
                     df[feature] = stats.zscore(df[feature])
                 elif norm_type == 'None':
                     pass
